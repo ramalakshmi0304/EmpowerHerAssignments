@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h1>B.Rama Lakshmi </h1>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
+        alt="Profile photo of B. Rama Lakshmi">
+    <div class="about-section">
+        <h2> About Me</h2>
+        <p>
+            Hello! I am <span class="highlight">B. Rama Lakshmi</span>. I am grateful to be a part of the EmpowerHer
+            Program at Masai School. I'm thoroughly enjoying the experience and appreciate the opportunity.
+        </p>
+        <h2>Find me Online</h2>
+        <div class="social links">
+            <a href="https://www.linkedin.com" target="_blank">LinkedIn</a>
+        </div>
+</body>
+
+</html>
