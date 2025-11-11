@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Border Example</title>
+    <style>
+
+         .parent{
+            display: flex;
+        }
+
+        img {
+            width: 100px;
+        }
+
+        .box {
+
+            border: 1px solid grey;
+            padding: 20px;
+            margin: 20px;
+            margin-left: 25px;
+            background-color: white;
+            width: 350px;
+            border-radius: 30px;
+            box-shadow: 10px 10px 15px grey;
+
+        }
+
+        .box>img {
+            width: 25%;
+            padding-left: 1%;
+            padding-right: 1%;
+            margin-left: 1%;
+            margin-top: 20px;
+            /* border: 1px solid black; */
+            border-radius: 20px;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        }
+
+        .box>h3 {
+            font-size: 15px;
+            font-family: "Poppins";
+        }
+
+        .box>h1 {
+            font-size: 22px;
+            font-family: "Poppins";
+        }
+
+        .pipe {
+            color: red;
+            font: size 18px;
+            font-weight: bolder
+        }
+
+        .first-button {
+            background-color: #ED0331;
+            width: 30%;
+            height: 40px;
+            border-radius: 30px;
+            border: none;
+            color: white;
+            font-family: "Poppins";
+        }
+
+        .second-button {
+            background-color: white;
+            width: 30%;
+            font-size: 12px;
+            height: 40px;
+            border-radius: 20px;
+            border: 1px solid #ED0331;
+            color: #ED0331;
+        }
+
+        .first-button:hover {
+            background-color: white;
+            color: black;
+        }
+
+         .box:hover {
+            background-color: #ED0331;
+            color: white;
+         }
+    </style>
+</head>
+
+<body>
+     <div class="parent">
+
+    <div class="box">
+        <img src="https://cdn.masaischool.com/masai-website/iim-sirmur-logo.png" alt="IIT Sirmaur logo">
+
+        <h3>IIM Sirmaur</h3>
+        <h1>EDGE: Essentials of Data <br> Analytics, Gen AI & Execution</h1>
+        <p> 06 months <span class="pipe">|</span> Online</p>
+        <p>Qualifier test- <strong>12th Nov 2025</strong></p>
+        <button class="first-button"> Learn more →</button>
+        <button class="second-button" second-button>Brochure →</button>
+    </div>
+
+    <div class="box">
+        <img src="https://cdn.masaischool.com/masai-website/iim-sirmur-logo.png" alt="IIT Sirmaur logo">
+
+        <h3>IIM Sirmaur</h3>
+        <h1>EDGE: Essentials of Data <br> Analytics, Gen AI & Execution</h1>
+        <p> 06 months <span class="pipe">|</span> Online</p>
+        <p>Qualifier test- <strong>12th Nov 2025</strong></p>
+        <button class="first-button"> Learn more →</button>
+        <button class="second-button" second-button>Brochure →</button>
+    </div>
+    <div class="box">
+        <img src="https://cdn.masaischool.com/masai-website/iim-sirmur-logo.png" alt="IIT Sirmaur logo">
+
+        <h3>IIM Sirmaur</h3>
+        <h1>EDGE: Essentials of Data <br> Analytics, Gen AI & Execution</h1>
+        <p> 06 months <span class="pipe">|</span> Online</p>
+        <p>Qualifier test- <strong>12th Nov 2025</strong></p>
+        <button class="first-button"> Learn more →</button>
+        <button class="second-button" second-button>Brochure →</button>
+    </div>
+</body>
+
+</div>
+</html>

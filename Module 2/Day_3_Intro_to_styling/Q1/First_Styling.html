@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Webpage</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            border: 5px solid black;
+            padding: 50px;
+            background-color: #f0f8ff;
+            text-align: center;
+        }
+
+       table {
+            border-collapse: collapse;
+            width: 30%;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        th, td {
+            padding: 10px;
+        }
+
+        button {
+            background-color: #8b8994;
+            color: rgb(37, 7, 145);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: rgb(221, 17, 17);
+        }
+
+        p {
+            text-align: justify;
+            color: rgb(9, 23, 214);
+            border: 2px solid black;
+            padding: 10px;
+            width: 60%;
+            margin: 20px auto;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        footer {
+            background-color: darkgray;
+            font-size: smaller;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="color:darkblue;font: size 40Px; background-color:lightgrey;">Welcome to My Webpage</h1> 
+    <h2 style="font-weight:bold; font: size 28Px; color: green">Learning Web Develpment</h2>
+
+    <nav>
+        <a href="#">Home</a> |
+        <a href="#">About</a> |
+        <a href="#">Contact</a>
+    </nav>
+<br><br>
+    <header>
+        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*V-Jp13LvtVc2IiY2fp4qYw.jpeg"
+             style="width: 400px; border-radius: 50%; box-shadow: none;">
+        <br><br>
+
+        <table border="1">
+            <tr style="background-color: #f2f2f2;">
+                <th style="border: 2px solid red;">S.No</th>
+                <th style="border: 2px solid red;">Type of Services</th>
+            </tr>
+            <tr style="background-color: #ffffff;">
+                <td style="border: 2px solid purple;">1</td>
+                <td style="border: 2px solid orange;">X Services</td>
+            </tr>
+            <tr style="background-color: #f2f2f2;">
+                <td style="border: 2px solid brown;">2</td>
+                <td style="border: 2px solid darkmagenta;">Y Services</td>
+            </tr>
+            <tr style="background-color: #ffffff;">
+                <td style="border: 2px solid brown;">3</td>
+                <td style="border: 2px solid green;">Z Services</td>
+            </tr>
+        </table>
+
+        <br>
+        <button>Learn More</button>
+
+        <p>
+            A website is a collection of related web pages, like a book's pages, that are identified by a single domain
+            name and are stored on a web server. Users can access it via the internet through a web browser by typing its
+            unique address (URL). Websites serve various purposes, such as providing information, selling products
+            online, or connecting with people, and can consist of a single page or many linked pages.
+        </p>
+
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name"><br><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email"><br><br>
+
+            <button type="submit">Submit</button>
+        </form>
+    </header>
+
+    <footer>
+        © 2025 My Webpage | All Rights Reserved
+    </footer>
+</body>
+</html>

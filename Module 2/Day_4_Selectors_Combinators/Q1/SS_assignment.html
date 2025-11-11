@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navigation Bar with Footer</title>
+
+  <style>
+     * {
+      font-family: Arial, sans-serif;
+      box-sizing: border-box;
+    }
+
+     body {
+      margin: 0;
+      background-color: #f0f0f0;
+      min-height: 500vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+     #header {
+      background-color: black;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 100px 100px;
+      width: 70%;
+      margin: 20px auto;
+      border-radius: 8px;
+    }
+
+      .logo {
+      font-size: 40px;
+      margin-left: 100px;
+    }
+    .logo .be {
+      color: rgb(107, 175, 231);
+      font-weight: bold;
+    }
+    .logo .blog {
+      color: white;
+      font-weight: normal;
+    }
+
+       .nav {
+      display: flex;
+      gap: 50px;
+      font-size: 22px;
+    }
+
+    .nav a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .nav a.buy {
+      color: hsl(180, 48%, 45%);
+      font-weight: normal;
+    }
+
+    /* ✅ Pseudo-class: hover effect */
+    .nav a:hover {
+      color: yellow;
+    }
+
+  
+    .nav a:first-child {
+      color: lightgreen;
+      font-weight: bold;
+    }
+
+  
+    #header, #footer {
+      margin: 10px 0;
+      padding: 10px;
+    }
+
+   
+    #footer {
+      background-color: #222;
+      color: white;
+      text-align: center;
+      border-radius: 8px;
+      width: 100%;
+      padding: 15px 0;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div id="header">
+    <div class="logo">
+      <span class="be">Be</span><span class="blog">blog</span>
+    </div>
+    <div class="nav">
+      <a href="#">Home</a>
+      <a href="#">Webdesign</a>
+      <a href="#">WordPress</a>
+      <a href="#">About Us</a>
+      <a href="#">BeAdvice</a>
+      <a href="#" class="buy">Buy BeTheme</a>
+    </div>
+  </div>
+
+  <!-- Add some content for spacing -->
+  <div style="flex: 1;"></div>
+
+  <!-- Footer -->
+  <div id="footer">
+    <p>© 2025 Beblog. All Rights Reserved.</p>
+  </div>
+
+</body>
+</html>
