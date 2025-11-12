@@ -8,3 +8,5 @@ function isPrime(num) {
 
 console.log(isPrime(7));
 console.log(isPrime(10));
+
+
