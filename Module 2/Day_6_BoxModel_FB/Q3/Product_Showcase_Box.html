@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .container {
+            width: 500px;
+            border: 3px solid rgb(214, 214, 214);
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 10px;
+            font-family: Arial, sans-serif;
+            box-shadow: 0 4px 12px;
+            
+        }
+
+        img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        h3 {
+            color: black;
+            font-size: 22px;
+            font-weight: 500;
+            line-height: 1.3;
+            text-align: left;
+            margin-left: 80px;
+        }
+
+        p {
+            font-size: 20px;
+            color: grey;
+            font-weight: 500;
+            font-family: Arial, Helvetica, sans-serif;
+            margin-left: 80px;
+            margin-top: 5px;
+        }
+
+        .rating-row {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-left: 80px;
+            margin-top: 5px;
+        }
+
+        .rating {
+            background: #2e7d32;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 13px;
+        }
+
+        .assured {
+            width: 45px;
+        }
+
+        .price-row {
+            display: flex;
+            /* 💥 THIS FIXES YOUR ISSUE */
+            align-items: center;
+            gap: 10px;
+            margin-left: 80px;
+            margin-top: 10px;
+        }
+
+        .price {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: gray;
+        }
+
+        .offer {
+            color: green;
+            font-weight: bold;
+        }
+
+        .bank-offer {
+            color: green;
+            font-size: 18px;
+            margin-left: 80px;
+            margin-top: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: orange;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #ff9800;
+        }
+
+        ✅
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/smartwatch/w/x/h/-original-imahfa7xspmxemvj.jpeg"
+            alt="Samsung Galaxy Watch6 LTE">
+        <br><br>
+        <h3> SAMSUNG Galaxy Watch6 LTE</h3>
+        <p> Graphit Strap, 44mm </p>
+        <div class="rating-row">
+            <span class="rating">4.3 ★</span>
+            <span class="count">(973)</span>
+            <img class="assured" src="https://www.pngkey.com/png/full/117-1174827_flipkart-assured-logo-png.png">
+        </div>
+
+
+        <div class="price-row">
+            <span class="price">₹18,999</span>
+            <span class="old-price">₹41,999</span>
+            <span class="offer">54% off</span>
+        </div>
+
+        <p class="bank-offer">Bank Offer</p>
+
+        <div style="text-align: center;"> <button> Buy Now</button> </div>
+
+    </div>
+
+</body>
+
+</html>
