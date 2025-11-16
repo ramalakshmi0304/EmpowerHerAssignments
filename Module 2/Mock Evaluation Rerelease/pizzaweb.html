@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        
+        body{
+            justify-content: center;
+            align-items: center;
+        }
+
         .navbar {
             display: flex;
             justify-content: space-around;
@@ -36,7 +42,8 @@
             font-weight: bold;
             padding: 10px 20px;
             gap: 20px;
-            flex=1 text-decoration: none;
+            flex:1;
+            text-decoration: none;
         }
 
         .navbar button {
@@ -49,20 +56,19 @@
         .top-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            width: 55%;
-            gap: 20px;
+            width: 40%;
+            gap:40px
+            margin:auto
         }
 
         .topsection {
             display: grid;
-            margin: 10px;
             height: 400px;
-            width: 90%;
+            width: 80%;
             background-color: red;
-            padding: 10px 20px;
-            color: white;
-            justify-content: center;
-            align-items: center;
+           color: white;
+            margin: auto;
+           
         }
 
         .top-container img {
@@ -94,20 +100,19 @@
             grid-template-columns: repeat(4, 1fr);
             width: 70%;
             gap: 20px;
+            margin:auto;
 
         }
 
         .midsection {
             display: grid;
-            margin: 10px;
+            margin: auto;
             height: 400px;
-            width: 90%;
+            width: 100%;
             background-color: rgb(231, 223, 223);
             padding: 10px 20px;
             color: black;
-            justify-content: center;
-            align-content: center;
-            border-radius: 5px;
+            border-radius: 10px;
             border-color: grey;
 
 
@@ -125,6 +130,7 @@
         .mid-container>div>div {
             color: red;
             text-align: center;
+            font-size: 22px;
         }
 
         hr {
@@ -136,8 +142,7 @@
         .bottomsection {
             display: flex;
             align-content: center;
-            flex=1;
-           
+
         }
 
         .bottom-left>img {
@@ -146,16 +151,17 @@
             align-items: center;
             padding: 20px;
         }
-         
-        .bottom-button >img{
-            width:40%;
+
+        .bottom-button>img {
+            width: 40%;
 
         }
-        .bottom-right p{
-            font-size:18px;
-                 }
-            
 
+        .bottom-right p {
+            font-size: 18px;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
 
 

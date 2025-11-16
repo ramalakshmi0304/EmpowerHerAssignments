@@ -7,23 +7,21 @@
     <title>Document</title>
 
     <style>
-        .navbar {
+        <style>
 
+        /* NAVBAR ------------------------ */
+        .navbar {
             display: flex;
-            background-color: white;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
+            background-color: white;
             padding: 10px 20px;
-            border: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-        
         }
 
         .logo {
+            color: rgb(65, 11, 151);
             font-size: 24px;
             font-weight: bold;
-            font-family: Arial, Helvetica, sans-serif;
-            color: rgb(50, 50, 190);
             text-decoration: none;
         }
 
@@ -35,34 +33,217 @@
         }
 
         .nav-links a {
-
-            font-size: 12px;
-            font-family: Arial, Helvetica, sans-serif;
-            color: rgb(50, 50, 190);
+            color: rgb(83, 80, 218);
+            text-decoration: none;
+            font-size: 16px;
         }
 
         .download-btn {
-            background-color: red;
-            color: white;
-            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f5182a;
+            color: #fff;
             border: none;
             padding: 8px 16px;
             border-radius: 4px;
             cursor: pointer;
         }
 
-        .top-container{
+        /* GRID CONTAINER for TOP CARDS */
+        .top-container {
             display: grid;
-            grid-template-columns: repeat(3,1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
-            width:60%;
-            margin:20px auto;
-           }
+            width: 60%;
+            margin: 20px auto;
+        }
 
-           .topsection{
-            
-           }
+        .topsection {
+            display: grid;
+            background-color: red;
+            padding: 10px;
+            width: 90%;
+            height: 300px;
+            justify-items: center;
+            align-content: center;
+            text-align: center;
+        }
 
+        .topsection img {
+            width: 40%;
+        }
+
+        .topsection h3 {
+            font-size: 22px;
+            color: white;
+            margin: 10px 0 5px;
+        }
+
+        .topsection p {
+            font-size: 16px;
+            color: white;
+            margin: 5px 0;
+        }
+
+        .topsection button {
+            background-color: white;
+            color: red;
+            width: 80px;
+            height: 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+
+        /* MIDSECTION GRID ------------- */
+        .mid-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            width: 90%;
+            margin: 40px auto;
+        }
+
+        .midsection {
+            display: grid;
+            background-color: white;
+            padding: 20px;
+            height: 300px;
+            justify-items: center;
+            align-content: center;
+            text-align: center;
+            box-shadow: 5px 10px 10px grey;
+            border-radius: 10px;
+        }
+
+        .midsection img {
+            width: 60px;
+        }
+
+        .midsection div {
+            font-size: 22px;
+            color: red;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+
+        /* ==========================
+           EXCLUSIVE OFFERS SECTION
+        ========================== */
+        .bottomsection {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 40px 20px;
+            gap: 30px;
+        }
+
+        .bottomsection .left-img {
+            width: 320px;
+        }
+
+        .bottomsection .content {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .bottomsection h1 {
+            font-size: 32px;
+            margin: 0;
+        }
+
+        .bottomsection p {
+            font-size: 18px;
+            margin: 0;
+        }
+
+        .store-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .store-buttons img {
+            width: 150px;
+            cursor: pointer;
+        }
+
+        /* -----------------------
+           RESPONSIVE DESIGN
+        ------------------------ */
+
+        /* Large tablets & small laptops */
+        @media (max-width: 1024px) {
+            .top-container {
+                width: 80%;
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .mid-container {
+                grid-template-columns: repeat(3, 1fr);
+                width: 95%;
+            }
+        }
+
+        /* Tablets & Large phones */
+        @media (max-width: 768px) {
+
+            .navbar {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+
+            .top-container {
+                width: 90%;
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .mid-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .bottomsection {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .bottomsection .left-img {
+                width: 250px;
+            }
+
+            .store-buttons {
+                justify-content: center;
+            }
+        }
+
+
+        /* Mobile phones */
+        @media (max-width: 480px) {
+
+            .nav-links {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .top-container {
+                grid-template-columns: 1fr;
+                width: 95%;
+            }
+
+            .mid-container {
+                grid-template-columns: 1fr;
+            }
+
+            .store-buttons img {
+                width: 130px;
+            }
+        }
     </style>
 
 
@@ -207,23 +388,25 @@
         </div>
     </div>
 
-    <div class="offers-section">
-        <div class="offer-left">
-            <img src="https://www.dominos.co.in/assets/new_app_img@2x.png" alt="mob">
-        </div>
+    <div class="bottomsection">
 
-        <div class="offer-right">
-            <h1> Unlock Exclusive Offers</h1>
-            <p> For lightning fast ordering experience download the Domino's app</p>
+        <!-- LEFT IMAGE -->
+        <img class="left-img" src="https://www.dominos.co.in/assets/new_app_img@2x.png" alt="Dominos App Preview">
 
-            <div class="offer-btn">
-                <img
-                    src="https://masai-course.s3.ap-south-1.amazonaws.com/editor/uploads/2022-12-21/Screenshot%202022-12-21%20at%202.47.09%20PM_558991.png">
-                <img
-                    src="https://masai-course.s3.ap-south-1.amazonaws.com/editor/uploads/2022-12-21/Screenshot%202022-12-21%20at%202.47.43%20PM_652243.png">
+        <!-- RIGHT TEXT + BUTTONS -->
+        <div class="content">
+            <h1>Unlock Exclusive Offers</h1>
+            <p>For lightning fast ordering experience download the Domino's app</p>
 
+            <div class="store-buttons">
+                <img src="https://masai-course.s3.ap-south-1.amazonaws.com/editor/uploads/2022-12-21/Screenshot%202022-12-21%20at%202.47.09%20PM_558991.png"
+                    alt="Google Play">
+
+                <img src="https://masai-course.s3.ap-south-1.amazonaws.com/editor/uploads/2022-12-21/Screenshot%202022-12-21%20at%202.47.43%20PM_652243.png"
+                    alt="App Store">
             </div>
         </div>
+
     </div>
 
 
