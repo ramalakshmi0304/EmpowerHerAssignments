@@ -6,19 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        
-        body{
-            justify-content: center;
-            align-items: center;
-        }
-
         .navbar {
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
             background: white;
             padding: 10px 20px;
             box-shadow: 5px 5px 10px rgb(0, 0, 10);
-            text-decoration: none;
+
         }
 
         .logo {
@@ -26,13 +20,14 @@
             font-weight: bold;
             color: rgb(53, 115, 196);
             font-size: 24px;
+            text-decoration: none;
         }
 
         .nav-links {
             display: flex;
-            flex-wrap: wrap;
-            margin: auto;
-            text-decoration: none;
+            gap: 20px;
+            flex: 1;
+            justify-content: center;
         }
 
         .nav-links a {
@@ -40,46 +35,48 @@
             color: rgb(53, 115, 196);
             font-size: 16px;
             font-weight: bold;
-            padding: 10px 20px;
-            gap: 20px;
-            flex:1;
+                  
             text-decoration: none;
         }
 
         .navbar button {
             color: white;
             background-color: red;
-            border: none;
-            padding: 10px;
+            border: 4px;
+            padding: 8px 10px;
         }
 
         .top-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            width: 40%;
-            gap:40px
-            margin:auto
+            gap: 40px;
+            width: 60%;
+            margin:20px auto
         }
 
         .topsection {
             display: grid;
             height: 400px;
-            width: 80%;
+            width: 100%;
             background-color: red;
-           color: white;
-            margin: auto;
-           
+            color: white;
+            justify-items: center;
+            align-content: center;
+            text-align: center;
+            padding: 10px;
+
         }
 
         .top-container img {
-            width: 45%;
+            width: 40%;
+            
 
         }
 
         .top-container button {
             background-color: white;
             color: red;
-            width: 25%;
+            width: 80px;
             height: 35px;
         }
 
@@ -100,20 +97,22 @@
             grid-template-columns: repeat(4, 1fr);
             width: 70%;
             gap: 20px;
-            margin:auto;
+            margin: auto;
 
         }
 
         .midsection {
             display: grid;
-            margin: auto;
             height: 400px;
-            width: 100%;
-            background-color: rgb(231, 223, 223);
+            width: 90%;
+            background-color:white;
             padding: 10px 20px;
             color: black;
+            justify-items: center;
+            align-content: center;
+            text-align: center;
+            box-shadow: 5px 10px 10px grey;
             border-radius: 10px;
-            border-color: grey;
 
 
         }
@@ -232,7 +231,8 @@
             <button> VIEW ALL</button>
         </div>
     </div>
-
+<br><br>
+<h1 style="text-align: center;"> Explore</h1>
     <div class="mid-container">
         <div class="midsection">
             <img src="https://masai-course.s3.ap-south-1.amazonaws.com/editor/uploads/2022-12-21/Screenshot%202022-12-21%20at%203.06.17%20PM_590391.png"
