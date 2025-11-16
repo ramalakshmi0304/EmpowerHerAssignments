@@ -4,173 +4,432 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Domino's Layout</title>
+
     <style>
+        /* NAVBAR ------------------------ */
         .navbar {
             display: flex;
-            width: 1200px background-color: white;
-            color: rgba(41, 131, 235, 0.493);
-            font-family: Arial, sans-serif;
-            font-size: 22px;
-            padding: 10px;
-            word-spacing: 2px;
+            align-items: center;
+            justify-content: space-between;
+            background-color: white;
+            padding: 10px 20px;
         }
 
-        .navbar>h1 {
-            font-size: 22px;
+        .logo {
+            color: rgb(65, 11, 151);
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
         }
 
-        .parent {
+        .nav-links {
             display: flex;
-            gap: 10px;
+            gap: 20px;
+            flex: 1;
+            justify-content: center;
+        }
+
+        .nav-links a {
+            color: rgb(83, 80, 218);
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .download-btn {
+            background-color: #f5182a;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+
+        /* GRID CONTAINER for TOP CARDS */
+        .top-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            width: 60%;
+            margin: 20px auto;
         }
 
         .topsection {
-
             display: grid;
             background-color: red;
             padding: 10px;
-            width: 300px;
+            width: 90%;
             height: 300px;
-            margin: 0;
-            border: 20px;
-            justify-content: center;
-            align-items: center;
+            justify-items: center;
+            align-content: center;
+            text-align: center;
         }
 
-        .topsection>img {
-            width: 50px;
-            justify-content: center;
-            align-items: center;
-
+        .topsection img {
+            width: 40%;
         }
 
         .topsection h3 {
             font-size: 22px;
             color: white;
-            text-align: center;
+            margin: 10px 0 5px;
         }
 
-        .topsection>p {
+        .topsection p {
             font-size: 16px;
             color: white;
-            text-align: center;
-
+            margin: 5px 0;
         }
 
-        .topsection>button {
-
+        .topsection button {
             background-color: white;
             color: red;
             width: 80px;
-            align-items: center;
+            height: 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
 
-            justify-content: center;
+
+        /* MIDSECTION GRID ------------- */
+        .mid-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            width: 90%;
+            margin: 40px auto;
         }
 
         .midsection {
             display: grid;
             background-color: white;
-            padding: 10px;
-            width: 300px;
-            height: 200px;
-            margin: 0;
+            padding: 20px;
+            height: 300px;
+            justify-items: center;
+            align-content: center;
+            text-align: center;
+            box-shadow: 5px 10px 10px grey;
+            border-radius: 10px;
+        }
+
+        .midsection img {
+            width: 60px;
+        }
+
+        .midsection div {
+            font-size: 22px;
+            color: red;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .midsection hr {
+            width: 80%;
+            margin: 10px auto;
+            border: none;
+            border-top: 1px solid #ccc;
+        }
+
+
+        /* ==========================
+           BOTTOM SECTION FIX  
+        ========================== */
+
+        .offers-section {
+            display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 5px, 10px, 10px, grey;
+            gap: 40px;
+            padding: 50px 20px;
+            flex-wrap: wrap;
         }
 
-        .midsection>img {
-            align-items: center;
-            background-color: white;
+        .offer-left .phone-img {
+            width: 350px;
+            max-width: 100%;
         }
 
-        .midsection>h3 {
-            font-size: 22px;
-            color: black;
-            font-family: Arial, sans-serif;
-            font-weight: bold;
-            background-color: white;
-        }
-
-        .midsection>p {
-            font-size: 18px;
-            color: black;
-            font-family: Arial, sans-serif;
-            background-color: white;
+        .offer-right {
+            max-width: 400px;
             text-align: center;
         }
 
-        .midsection>div {
+        .offer-right h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
 
-            font-size: 22px;
-            color: red;
-            text-align: centre;
+        .offer-right p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
 
+        .store-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .store-buttons img {
+            width: 160px;
+            cursor: pointer;
+        }
+
+        /* -----------------------
+           RESPONSIVE DESIGN
+        ------------------------ */
+
+        /* Large tablets & small laptops */
+        @media (max-width: 1024px) {
+            .top-container {
+                width: 80%;
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .mid-container {
+                grid-template-columns: repeat(3, 1fr);
+                width: 95%;
+            }
+        }
+
+        /* Tablets & Large phones */
+        @media (max-width: 768px) {
+
+            .navbar {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+
+            .top-container {
+                width: 90%;
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .mid-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .offer-right h1 {
+                font-size: 26px;
+            }
+
+            .offer-right p {
+                font-size: 16px;
+            }
+        }
+
+
+        /* Mobile phones */
+        @media (max-width: 480px) {
+
+            .nav-links {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .top-container {
+                grid-template-columns: 1fr;
+                width: 95%;
+            }
+
+            .mid-container {
+                grid-template-columns: 1fr;
+            }
+
+            .store-buttons img {
+                width: 130px;
+            }
         }
     </style>
-
 </head>
 
 <body>
-    <div class="navbar">
-        <h1> Domino's Pizza</h1>
-<p> our Menu| Domino's| Stores| Giftcard|Corporate|Enquiry|Contact</p>
 
-       
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="#" class="logo">Domino's Pizza</a>
 
-        <button> Download App</button>
+        <div class="nav-links">
+            <a href="#">Our Menu</a>
+            <a href="#">Domino's</a>
+            <a href="#">Stores</a>
+            <a href="#">Gift Card</a>
+            <a href="#">Corporate</a>
+            <a href="#">Enquiry</a>
+            <a href="#">Contact</a>
+        </div>
 
-    </div>
-    <div class="parent">
+        <button class="download-btn">Download App</button>
+    </nav>
+
+    <h1 style="text-align:center;">Order</h1>
+
+
+    <!-- TOP CARDS -->
+    <div class="top-container">
+
         <div class="topsection">
-
-            <img src="https://www.dominos.co.in/assets/new_app_img@2x.png" alt="Veg pizza">
-
+            <img
+                src="https://masai-course.s3.ap-south-1.amazonaws.com/editor/uploads/2022-12-22/Screenshot%202022-12-22%20at%208.37.04%20AM_353938.png">
             <h3>VEG PIZZA</h3>
-            <p> A delight for veggie lovers! Choose from <br> our wide range of delicious vegetarian <br> pizza, its
-                softer
-                and tastier</p>
+            <p>A delight for veggie lovers! Choose from <br> our wide range of delicious vegetarian <br> pizza, its
+                softer and tastier</p>
             <button>VIEW ALL</button>
         </div>
 
         <div class="topsection">
-
-            <img src="https://www.dominos.co.in/assets/new_app_img@2x.png" alt="Veg pizza">
-
-            <h3>VEG PIZZA</h3>
-            <p> A delight for veggie lovers! Choose from <br> our wide range of delicious vegetarian <br> pizza, its
-                softer
-                and tastier</p>
+            <img
+                src="https://masai-course.s3.ap-south-1.amazonaws.com/editor/uploads/2022-12-22/Screenshot%202022-12-22%20at%208.37.04%20AM_353938.png">
+            <h3>OUR MENU</h3>
+            <p>Indulge into mouth-watering taste of Pizza mania range. Perfect answer to all your food cravings</p>
             <button>VIEW ALL</button>
         </div>
+
         <div class="topsection">
-
-            <img src="https://www.dominos.co.in/assets/new_app_img@2x.png" alt="Veg pizza">
-
-            <h3>VEG PIZZA</h3>
-            <p> A delight for veggie lovers! Choose from <br> our wide range of delicious vegetarian <br> pizza, its
-                softer
-                and tastier</p>
+            <img
+                src="https://masai-course.s3.ap-south-1.amazonaws.com/editor/uploads/2022-12-22/Screenshot%202022-12-22%20at%208.37.04%20AM_353938.png">
+            <h3>OUR MENU</h3>
+            <p>Choose your favourite non-veg pizzas with fresh crusts & toppings</p>
             <button>VIEW ALL</button>
         </div>
-    </div>
-    <div class="midsection">
-        <img src="https://masai-course.s3.ap-south-1.amazonaws.com/editor/uploads/2022-12-21/Screenshot%202022-12-21%20at%203.06.17%20PM_590391.png"
-            alt="image-1">
-        <h3> OUR MENU</h3>
-        <p> Explore our range of delicious Pizzas, delivered in 30 min</p>
-        <div>
-            DISCOVER PIZZA
+
+        <div class="topsection">
+            <img
+                src="https://masai-course.s3.ap-south-1.amazonaws.com/editor/uploads/2022-12-22/Screenshot%202022-12-22%20at%208.37.04%20AM_353938.png">
+            <h3>OUR MENU</h3>
+            <p>Fresh non-veg pizzas with soft crust and toppings</p>
+            <button>VIEW ALL</button>
+        </div>
+
+        <div class="topsection">
+            <img
+                src="https://masai-course.s3.ap-south-1.amazonaws.com/editor/uploads/2022-12-22/Screenshot%202022-12-22%20at%208.37.04%20AM_353938.png">
+            <h3>OUR MENU</h3>
+            <p>Delicious vegetarian pizza with soft base and fresh toppings</p>
+            <button>VIEW ALL</button>
+        </div>
+
+        <div class="topsection">
+            <img
+                src="https://masai-course.s3.ap-south-1.amazonaws.com/editor/uploads/2022-12-22/Screenshot%202022-12-22%20at%208.37.04%20AM_353938.png">
+            <h3>OUR MENU</h3>
+            <p>Freshly baked pizzas available in all categories</p>
+            <button>VIEW ALL</button>
         </div>
 
     </div>
 
 
+    <h1 style="text-align:center;">Explore</h1>
 
+    <!-- MIDSECTION GRID -->
+    <div class="mid-container">
 
+        <!-- Repeat card 8 times -->
+        <div class="midsection">
+            <img
+                src="https://masai-course.s3.ap-south-1.amazonaws.com/editor/uploads/2022-12-21/Screenshot%202022-12-21%20at%203.06.17%20PM_590391.png">
+            <h3>OUR MENU</h3>
+            <p>Explore our range of delicious pizzas delivered in 30 minutes.</p>
+            <hr>
+            <div>DISCOVER PIZZA</div>
+        </div>
+
+        <div class="midsection">
+            <img
+                src="https://masai-course.s3.ap-south-1.amazonaws.com/editor/uploads/2022-12-21/Screenshot%202022-12-21%20at%203.06.17%20PM_590391.png">
+            <h3>OUR MENU</h3>
+            <p>Explore our range of delicious pizzas delivered in 30 minutes.</p>
+            <hr>
+            <div>DISCOVER PIZZA</div>
+        </div>
+
+        <div class="midsection">
+            <img
+                src="https://masai-course.s3.ap-south-1.amazonaws.com/editor/uploads/2022-12-21/Screenshot%202022-12-21%20at%203.06.17%20PM_590391.png">
+            <h3>OUR MENU</h3>
+            <p>Explore our range of delicious pizzas delivered in 30 minutes.</p>
+            <hr>
+            <div>DISCOVER PIZZA</div>
+        </div>
+
+        <div class="midsection">
+            <img
+                src="https://masai-course.s3.ap-south-1.amazonaws.com/editor/uploads/2022-12-21/Screenshot%202022-12-21%20at%203.06.17%20PM_590391.png">
+            <h3>OUR MENU</h3>
+            <p>Explore our range of delicious pizzas delivered in 30 minutes.</p>
+            <hr>
+            <div>DISCOVER PIZZA</div>
+        </div>
+
+        <div class="midsection">
+            <img
+                src="https://masai-course.s3.ap-south-1.amazonaws.com/editor/uploads/2022-12-21/Screenshot%202022-12-21%20at%203.06.17%20PM_590391.png">
+            <h3>OUR MENU</h3>
+            <p>Explore our range of delicious pizzas delivered in 30 minutes.</p>
+            <hr>
+            <div>DISCOVER PIZZA</div>
+        </div>
+
+        <div class="midsection">
+            <img
+                src="https://masai-course.s3.ap-south-1.amazonaws.com/editor/uploads/2022-12-21/Screenshot%202022-12-21%20at%203.06.17%20PM_590391.png">
+            <h3>OUR MENU</h3>
+            <p>Explore our range of delicious pizzas delivered in 30 minutes.</p>
+            <hr>
+            <div>DISCOVER PIZZA</div>
+        </div>
+
+        <div class="midsection">
+            <img
+                src="https://masai-course.s3.ap-south-1.amazonaws.com/editor/uploads/2022-12-21/Screenshot%202022-12-21%20at%203.06.17%20PM_590391.png">
+            <h3>OUR MENU</h3>
+            <p>Explore our range of delicious pizzas delivered in 30 minutes.</p>
+            <hr>
+            <div>DISCOVER PIZZA</div>
+        </div>
+
+        <div class="midsection">
+            <img
+                src="https://masai-course.s3.ap-south-1.amazonaws.com/editor/uploads/2022-12-21/Screenshot%202022-12-21%20at%203.06.17%20PM_590391.png">
+            <h3>OUR MENU</h3>
+            <p>Explore our range of delicious pizzas delivered in 30 minutes.</p>
+            <hr>
+            <div>DISCOVER PIZZA</div>
+        </div>
 
     </div>
+    <br><br><br>
+    <!-- BOTTOM SECTION -->
+    <div class="offers-section">
+
+        <div class="offer-left">
+            <img src="https://www.dominos.co.in/assets/new_app_img@2x.png" class="phone-img">
+        </div>
+
+        <div class="offer-right">
+            <h1>Unlock Exclusive Offers</h1>
+            <p>For lightning fast ordering experience download the Domino’s app</p>
+
+            <div class="store-buttons">
+                <img
+                    src="https://masai-course.s3.ap-south-1.amazonaws.com/editor/uploads/2022-12-21/Screenshot%202022-12-21%20at%202.47.09%20PM_558991.png">
+                <img
+                    src="https://masai-course.s3.ap-south-1.amazonaws.com/editor/uploads/2022-12-21/Screenshot%202022-12-21%20at%202.47.43%20PM_652243.png">
+            </div>
+        </div>
+
+    </div>
+
+
 
 </body>
 
