@@ -1,0 +1,105 @@
+# index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ <!-- Navbar -->
+    <header>
+        <div class="logo">Rama Lakshmi</div>
+
+        <nav id="navMenu">
+            <a href="#">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <!-- Hamburger (Mobile) -->
+        <div class="hamburger" id="hamburger">☰</div>
+
+        <!-- Dark Mode Toggle (Desktop) -->
+        <div class="dark-toggle" id="darkToggleDesktop">🌙</div>
+    </header>
+
+    <!-- Floating Dark Mode Button (Mobile) -->
+    <div class="dark-floating" id="darkToggleMobile">🌙</div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Welcome to My Portfolio</h1>
+        <p>I am a Frontend Developer passionate about building clean and responsive websites.</p>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2>About Me</h2>
+        <p>
+            I am an aspiring full-stack developer dedicated to improving my skills in frontend
+            and backend development. I focus on building clean, simple, and responsive UI designs.
+        </p>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <h2>My Skills</h2>
+
+        <div class="skills-grid">
+            <div class="skill-box">HTML</div>
+            <div class="skill-box">CSS</div>
+            <div class="skill-box">JavaScript</div>
+            <div class="skill-box">React</div>
+            <div class="skill-box">Node.js</div>
+            <div class="skill-box">Git & GitHub</div>
+            <div class="skill-box">Responsive Design</div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2>Contact</h2>
+        <p>Email: <strong>mlakshmipradeep@gmail.com</strong></p>
+        <p>Feel free to reach out for collaboration or opportunities.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="#">LinkedIn</a>
+            <a href="#">GitHub</a>
+            <a href="#">Instagram</a>
+        </div>
+        <p>© 2025 Rama Lakshmi — All Rights Reserved</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        const hamburger = document.getElementById("hamburger");
+        const navMenu = document.getElementById("navMenu");
+
+        // Mobile Menu Toggle
+        hamburger.addEventListener("click", () => {
+            navMenu.classList.toggle("active");
+        });
+
+        // Dark Mode Toggle
+        const toggleDesktop = document.getElementById("darkToggleDesktop");
+        const toggleMobile = document.getElementById("darkToggleMobile");
+
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark");
+            toggleDesktop.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+            toggleMobile.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+        }
+
+        toggleDesktop.addEventListener("click", toggleDarkMode);
+        toggleMobile.addEventListener("click", toggleDarkMode);
+    </script>
+    
+
+</body>
+</html>

@@ -1,0 +1,220 @@
+# style.css
+
+/* GLOBAL */
+body {
+    margin: 0;
+    font-family: "Poppins", Arial, sans-serif;
+    background-color: #eaf3ff;
+    /* Light blue */
+    color: #333;
+    overflow-x: hidden;
+    transition: background 0.3s, color 0.3s;
+}
+
+/* Dark Mode */
+body.dark {
+    background: #1e1e1e;
+    color: #f1f1f1;
+}
+
+body.dark header {
+    background: #292929;
+}
+
+body.dark .skill-box {
+    background: #2b2b2b;
+    border-color: #555;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 40px;
+    background: white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 20;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 700;
+    color: #2a6ddf;
+    /* Blue logo */
+}
+
+/* Navbar */
+nav {
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+}
+
+nav a:hover {
+    color: #2a6ddf;
+    /* Blue hover */
+}
+
+/* Hamburger */
+.hamburger {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: #2a6ddf;
+}
+
+/* Dark Toggle (Desktop) */
+.dark-toggle {
+    font-size: 22px;
+    cursor: pointer;
+}
+
+/* Floating Toggle (Mobile) */
+.dark-floating {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #2a6ddf;
+    color: white;
+    padding: 12px 14px;
+    font-size: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 30;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(to right, #e3f2ff, #cde8ff);
+    padding: 40px 20px;
+    /* reduced padding */
+    min-height: 150px;
+    /* reduced height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 2rem;
+    /* reduced */
+    margin-bottom: 10px;
+    color: #003f7f;
+}
+
+.hero p {
+    font-size: 1rem;
+    /* reduced */
+    max-width: 600px;
+    color: #084c8d;
+}
+
+.btn {
+    padding: 12px 30px;
+    background: #2a6ddf;
+    color: white;
+    border-radius: 12px;
+    text-decoration: none;
+}
+
+/* Sections */
+.about,
+.skills,
+.contact {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.about h2,
+.skills h2,
+.contact h2 {
+    color: #043383;
+    background-color: #bfe6f0;
+}
+
+/* Skills Grid */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.skill-box {
+    background: white;
+    border: 2px solid #a9c7ff;
+    padding: 18px;
+    border-radius: 15px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.skill-box:hover {
+    background: #dce8ff;
+}
+
+/* Footer */
+footer {
+    background: #2a6ddf;
+    padding: 30px;
+    color: white;
+    text-align: center;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+}
+
+footer a {
+    color: white;
+}
+
+/* Tablet */
+@media (max-width: 1023px) {
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+    nav {
+        display: none;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        padding: 20px;
+        gap: 20px;
+    }
+
+    nav.active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .dark-toggle {
+        display: none;
+    }
+
+    .dark-floating {
+        display: block;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+}
