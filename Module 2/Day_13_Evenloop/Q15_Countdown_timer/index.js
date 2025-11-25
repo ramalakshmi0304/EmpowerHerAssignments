@@ -1,44 +1,22 @@
-const readline = require("readline");
+let seconds = parseInt(prompt("Enter countdown time in seconds:"), 10);
 
-// Create input interface
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
+// Start countdown
+let countdown = setInterval(() => {
+  console.log("Time left:", seconds);
+  seconds--;
 
-
-rl.question("Enter countdown time in seconds: ", (input) => {
-  let seconds = parseInt(input, 10);
-
-  if (isNaN(seconds) || seconds < 0) {
-    console.log("Invalid number!");
-    rl.close();
-    return;
+  if (seconds < 0) {
+    clearInterval(countdown);
+    console.log("Countdown Complete!");
   }
+}, 1000);
 
-  console.log(`Countdown started for ${seconds} seconds...`);
-  console.log('Press "s" anytime to stop.');
-
-
-  let countdown = setInterval(() => {
-    console.log("Time left:", seconds);
-    seconds--;
-
-    if (seconds < 0) {
+// Check for key press after a small delay using setTimeout
+setTimeout(() => {
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "s") {
       clearInterval(countdown);
-      console.log("Countdown Complete!");
-      rl.close();
+      console.log("Countdown Stopped by User!");
     }
-  }, 1000);
-
-
-  setTimeout(() => {
-    process.stdin.on("data", (key) => {
-      if (key.toString().trim() === "s") {
-        clearInterval(countdown);
-        console.log("Countdown Stopped by User!");
-        rl.close();
-      }
-    });
-  }, 500); 
-});
+  });
+}, 1000);
