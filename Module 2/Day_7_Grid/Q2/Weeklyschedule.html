@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        h1 {
+
+            font-family: cursive;
+            color: black;
+            font-size: 28px;
+            text-align: center;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            width: 800px;
+            margin: auto;
+            padding: 15px;
+            gap: 5px;
+
+        }
+
+        .container>div {
+
+            display: flex;
+            height: 30px;
+            color: black;
+            border-radius: 20px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .bluebox {
+            background-color: #bceaf2;
+        }
+
+        .pinkbox {
+            background-color: #f9cce3;
+        }
+
+        .yellowbox {
+            background-color: #f7e79c;
+        }
+
+        .orangebox {
+            background-color: rgb(231, 196, 129);
+        }
+
+        .note {
+            background: #bceaf2;
+            grid-column: span 6;
+            display: block;
+            text-align: left;
+            padding-left: 10px;
+            font-size: 14px;
+
+
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <h1 class="title">Weekly schedule</h1>
+
+    <div class="container">
+        <div></div>
+        <div class="pinkbox"> Monday</div>
+        <div class="orangebox"> Tuesday</div>
+        <div class="pinkbox"> Wednesday</div>
+        <div class="orangebox"> Thursday</div>
+        <div class="pinkbox"> Friday</div>
+
+        <!--08:00-->
+
+        <div class="bluebox"> 08:00</div>
+        <div class="pinkbox"> </div>
+        <div class="orangebox"> </div>
+        <div class="pinkbox"> </div>
+        <div class="orangebox"> </div>
+        <div class="pinkbox"> </div>
+
+        <!-- 09:00 Row -->
+
+        <div class="bluebox"> 09:00</div>
+        <div class="pinkbox"> </div>
+        <div class="orangebox"> </div>
+        <div class="pinkbox"> </div>
+        <div class="orangebox"> </div>
+        <div class="pinkbox"> </div>
+
+        <!--10:00-->
+
+        <div class="bluebox"> 10:00</div>
+        <div class="pinkbox"> </div>
+        <div class="orangebox"> </div>
+        <div class="pinkbox"> </div>
+        <div class="orangebox"> </div>
+        <div class="pinkbox"> </div>
+
+        <!--11:00-->
+
+        <div class="bluebox"> 11:00</div>
+        <div class="pinkbox"> </div>
+        <div class="orangebox"> </div>
+        <div class="pinkbox"> </div>
+        <div class="orangebox"> </div>
+        <div class="pinkbox"> </div>
+
+        <!--12:00-->
+
+        <div class="bluebox"> 12:00</div>
+        <div class="pinkbox"> </div>
+        <div class="orangebox"> </div>
+        <div class="pinkbox"> </div>
+        <div class="orangebox"> </div>
+        <div class="pinkbox"> </div>
+
+        <!--13:00-->
+
+        <div class="bluebox"> 13:00</div>
+        <div class="pinkbox"> </div>
+        <div class="orangebox"> </div>
+        <div class="pinkbox"> </div>
+        <div class="orangebox"> </div>
+        <div class="pinkbox"> </div>
+
+
+        <!--14:00-->
+
+        <div class="bluebox"> 14:00</div>
+        <div class="pinkbox"> </div>
+        <div class="orangebox"> </div>
+        <div class="pinkbox"> </div>
+        <div class="orangebox"> </div>
+        <div class="pinkbox"> </div>
+
+        <!--15:00-->
+
+        <div class="bluebox"> 15:00</div>
+        <div class="pinkbox"> </div>
+        <div class="orangebox"> </div>
+        <div class="pinkbox"> </div>
+        <div class="orangebox"> </div>
+        <div class="pinkbox"> </div>
+
+        <!--16:00-->
+
+        <div class="bluebox"> 16:00</div>
+        <div class="pinkbox"> </div>
+        <div class="orangebox"> </div>
+        <div class="pinkbox"> </div>
+        <div class="orangebox"> </div>
+        <div class="pinkbox"> </div>
+
+        <div class="note">Note:</div>
+    </div>
+
+</body>
+
+</html>
