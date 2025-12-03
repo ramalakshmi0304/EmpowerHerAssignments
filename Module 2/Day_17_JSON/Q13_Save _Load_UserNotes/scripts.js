@@ -1,44 +1,39 @@
 const noteInput = document.getElementById("noteInput");
-const saveBtn = document.getElementById("saveBtn");
-const loadBtn = document.getElementById("loadBtn");
-const clearBtn = document.getElementById("clearBtn");
+        const saveNotesbtn = document.getElementById("saveNotesbtn");
+        const loadNotesbtn = document.getElementById("loadNotesbtn");
+        const clearNotesbtn = document.getElementById("clearNotesbtn");
 
-// --- Load notes automatically on page load ---
-window.onload = function () {
-    const savedNotes = localStorage.getItem("notes");
-    if (savedNotes) {
-        noteInput.value = savedNotes;
-    }
-};
 
-// --- Save notes ---
-saveBtn.addEventListener("click", () => {
-    const text = noteInput.value.trim();
+       
+        saveNotesbtn.addEventListener('click', () => {
 
-    if (text === "") {
-        alert("Please enter some notes before saving!");
-        return;
-    }
+            const text = noteInput.value.trim();
 
-    localStorage.setItem("notes", text);
-    alert("Notes saved successfully!");
-});
+            if (text === "") {
+                alert("please enter some notes before saving");
+                return;
+            }
 
-// --- Load notes manually ---
-loadBtn.addEventListener("click", () => {
-    const savedNotes = localStorage.getItem("notes");
+            localStorage.setItem("notes", text);
+            alert("Notes saved successfully!");
+        }),
 
-    if (savedNotes) {
-        noteInput.value = savedNotes;
-        alert("Notes loaded!");
-    } else {
-        alert("No saved notes found!");
-    }
-});
+            loadNotesbtn.addEventListener('click', () => {
+                const savedNotes = localStorage.getItem("notes");
 
-// --- Clear notes ---
-clearBtn.addEventListener("click", () => {
-    localStorage.removeItem("notes");
-    noteInput.value = "";
-    alert("Notes cleared!");
-});
+                if (savedNotes) {
+                    noteInput.value = savedNotes;
+                    alert("Notes loaded!");
+                } else {
+                    alert("No saved notes found!");
+
+                }
+
+            });
+
+        clearNotesbtn.addEventListener("click", () => {
+            localStorage.removeItem("notes");
+            noteInput.value = "";
+            alert("Notes cleared!");
+        });
+
