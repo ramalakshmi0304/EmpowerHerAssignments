@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Todo List</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        input, button {
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        #taskInput, #searchInput {
+            width: 250px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 10px;
+            background: #f2f2f2;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 5px;
+        }
+
+        .completed {
+            text-decoration: line-through;
+            color: gray;
+        }
+
+        button.deleteBtn {
+            background: red;
+            color: white;
+            border: none;
+            padding: 5px 8px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Enhanced Todo List (with Search + JSON Storage)</h2>
+
+    <!-- Add task -->
+    <input type="text" id="taskInput" placeholder="Enter task...">
+    <button id="addBtn">Add Task</button>
+    <br><br>
+
+    <!-- Search tasks -->
+    <input type="text" id="searchInput" placeholder="Search tasks...">
+    <br><br>
+
+    <!-- Task List -->
+    <ul id="taskList"></ul>
+
+    <script src="script.js">    </script>
+
+</body>
+</html>
