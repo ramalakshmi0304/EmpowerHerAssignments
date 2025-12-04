@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f7f7f7;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    li {
+      background: #fff;
+      margin: 10px 0;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .title {
+      flex: 1;
+      margin-right: 10px;
+    }
+
+    button {
+      margin-left: 5px;
+      padding: 5px 10px;
+      cursor: pointer;
+      border: none;
+      border-radius: 3px;
+      color: #fff;
+    }
+
+    .delete-btn {
+      background-color: #e74c3c;
+    }
+
+    .toggle-btn {
+      background-color: #3498db;
+    }
+
+    .completed {
+      text-decoration: line-through;
+      color: #888;
+    }
+
+    .no-todos {
+      text-align: center;
+      color: #555;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>TO-DO LIST</h1>
+
+  <ul id="todoList"></ul>
+
+  <p class="no-todos" id="noTodoMessage">No Todos Available</p>
+
+</body>
+
+</html>
+
+<script src="script.js"> </script>
