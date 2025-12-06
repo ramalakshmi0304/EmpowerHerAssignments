@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Management</title>
+
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Sidebar */
+        #sidebar {
+            width: 260px;
+            background: #f4f4f4;
+            padding: 20px;
+            height: 100vh;
+            border-right: 2px solid #ccc;
+        }
+
+        #sidebar input {
+            width: 90%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+
+        #sidebar button {
+            width: 100%;
+            padding: 10px;
+            background: black;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Container for cards */
+        #container {
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            width: 100%;
+        }
+
+        .card {
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 250px;
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .card button {
+            width: 100%;
+            padding: 8px;
+            margin-top: 6px;
+            border: none;
+            cursor: pointer;
+            border-radius: 6px;
+            background: #333;
+            color: white;
+        }
+
+        .card button.delete {
+            background: red;
+        }
+
+        /* Modal */
+        #modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            justify-content: center;
+            align-items: center;
+        }
+
+        #modalContent {
+            background: white;
+            width: 300px;
+            padding: 20px;
+            border-radius: 12px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Sidebar Form -->
+    <div id="sidebar">
+        <h2>Add Book</h2>
+
+        <input type="text" id="title" placeholder="Book Title">
+        <input type="text" id="author" placeholder="Author Name">
+        <input type="number" id="price" placeholder="Price">
+        <input type="text" id="image" placeholder="Image URL">
+
+        <button onclick="addBook()">Add Book</button>
+    </div>
+
+    <!-- Cards -->
+    <div id="container"></div>
+
+    <!-- Details Modal -->
+    <div id="modal" onclick="closeModal()">
+        <div id="modalContent" onclick="event.stopPropagation()"></div>
+    </div>
+
+    <script>
+
+        const BASE_URL = "https://book-management-web-app-fcda8-default-rtdb.asia-southeast1.firebasedatabase.app/";
+
+        //  Add Book
+        async function addBook() {
+            const book = {
+                title: document.getElementById("title").value,
+                author: document.getElementById("author").value,
+                price: document.getElementById("price").value,
+                coverImageURL: document.getElementById("image").value
+            };
+
+            await fetch(`${BASE_URL}books.json`, {
+                method: "POST",
+                body: JSON.stringify(book)
+            });
+
+            renderBooks();
+
+            document.getElementById("title").value = "";
+            document.getElementById("author").value = "";
+            document.getElementById("price").value = "";
+            document.getElementById("image").value = "";
+        }
+
+
+        //  Render Books
+        async function renderBooks() {
+            const res = await fetch(`${BASE_URL}books.json`);
+            const data = await res.json();
+
+            const container = document.getElementById("container");
+            container.innerHTML = "";
+
+            if (!data) {
+                container.innerHTML = "<h3>No books available</h3>";
+                return;
+            }
+
+            for (const id in data) {
+                const book = data[id];
+
+                const card = document.createElement("div");
+                card.classList.add("card");
+
+                const img = document.createElement("img");
+                img.src = book.coverImageURL;
+
+                const title = document.createElement("h3");
+                title.textContent = book.title;
+
+                const author = document.createElement("p");
+                author.textContent = `Author: ${book.author}`;
+
+                const price = document.createElement("p");
+                price.textContent = `₹ ${book.price}`;
+
+                //  Update Author Button
+                const updateBtn = document.createElement("button");
+                updateBtn.textContent = "Update Author";
+                updateBtn.onclick = () => updateAuthor(id, book.author);
+
+                //  Delete Button
+                const deleteBtn = document.createElement("button");
+                deleteBtn.textContent = "Delete";
+                deleteBtn.classList.add("delete");
+                deleteBtn.onclick = () => deleteBook(id);
+
+                //  View Details
+                const detailsBtn = document.createElement("button");
+                detailsBtn.textContent = "View Details";
+                detailsBtn.onclick = () => viewDetails(book);
+
+                // Append elements
+                card.appendChild(img);
+                card.appendChild(title);
+                card.appendChild(author);
+                card.appendChild(price);
+                card.appendChild(updateBtn);
+                card.appendChild(deleteBtn);
+                card.appendChild(detailsBtn);
+
+                container.appendChild(card);
+            }
+        }
+
+        renderBooks();
+
+
+        //  Update Author
+        async function updateAuthor(id, oldAuthor) {
+            let newAuthor = prompt("Enter new author name:", oldAuthor);
+            if (!newAuthor) return;
+
+            await fetch(`${BASE_URL}books/${id}.json`, {
+                method: "PATCH",
+                body: JSON.stringify({ author: newAuthor })
+            });
+
+            renderBooks();
+        }
+
+
+        //  Delete Book
+        async function deleteBook(id) {
+            await fetch(`${BASE_URL}books/${id}.json`, {
+                method: "DELETE"
+            });
+            renderBooks();
+        }
+
+
+        //  View Details Modal
+        function viewDetails(book) {
+            const modal = document.getElementById("modal");
+            const box = document.getElementById("modalContent");
+
+            box.innerHTML = `
+                <h2>${book.title}</h2>
+                <img src="${book.coverImageURL}" style="width:100%;height:200px;object-fit:cover;border-radius:10px;">
+                <p><b>Author:</b> ${book.author}</p>
+                <p><b>Price:</b> ₹${book.price}</p>
+                <button onclick="closeModal()" style="width:100%;padding:10px;background:black;color:white;border:none;margin-top:10px;">Close</button>
+            `;
+
+            modal.style.display = "flex";
+        }
+
+        function closeModal() {
+            document.getElementById("modal").style.display = "none";
+        }
+
+    </script>
+
+</body>
+
+</html>
