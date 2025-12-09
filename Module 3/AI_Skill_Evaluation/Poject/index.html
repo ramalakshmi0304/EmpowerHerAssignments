@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Daily Tracker</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<div class="container">
+
+    <section id="loginPage" class="card">
+    <h2>Access Your Account</h2>
+    <div class="form-group">
+      <input id="email" type="email" placeholder="Email">
+    </div>
+    <div class="form-group">
+      <input id="password" type="password" placeholder="Password">
+    </div>
+    <div style="display:flex; justify-content:space-between;">
+      <button id="loginBtn" class="btn-primary">Login</button>
+      <button id="signupBtn" class="btn-secondary">Create Account</button>
+    </div>
+    <div style="text-align:center;margin:12px 0;font-weight:500;">or</div>
+    <button id="googleLoginBtn" class="btn-danger">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" alt="Google"> Sign in with Google
+    </button>
+  </section>
+
+    <section id="dashboardPage" class="hidden">
+    <header>
+      <h1 style="color: rgba(0, 0, 255, 0.534); text-align: center;">Dashboard</h1>
+      <div>
+        <button id="gotoAnalytics" class="btn-secondary">Analytics</button>
+        <button id="logoutBtn" class="btn-danger">Logout</button>
+      </div>
+    </header>
+
+    <div class="card">
+      <h2>Add / Update Activity    </h2>
+      <div class="form-group">
+        <label for="nameInput">Activity Name</label>
+        <input id="nameInput" placeholder="e.g., Reading">
+      </div>
+      <div class="form-group">
+        <label for="durationInput">Duration (minutes)</label>
+        <input id="durationInput" type="number" placeholder="e.g., 30">
+      </div>
+      <button id="addBtn" class="btn-primary">Add / Update</button>
+    </div>
+
+    <div class="card">
+      <h3>Today's Activities</h3>
+      <ul id="activitiesList"></ul>
+      <div id="minutesLeft" class="minutes-left"></div>
+    </div>
+  </section>
+
+    <section id="analyticsPage" class="hidden">
+    <header>
+      <h1>Analytics</h1>
+      <div>
+        <button id="gotoDashboard" class="btn-secondary">Dashboard</button>
+        <button id="logoutBtn2" class="btn-danger">Logout</button>
+      </div>
+    </header>
+
+    <div class="grid">
+      <div class="col-1">
+        <div class="card"><h3>Time Spent (Pie)</h3><canvas id="pieChart"></canvas></div>
+      </div>
+      <div class="col-2">
+        <div class="card"><h3>Durations (Bar)        </h3><canvas id="barChart"></canvas></div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script type="module" src="script.js"></script>
+</body>
+</html>
