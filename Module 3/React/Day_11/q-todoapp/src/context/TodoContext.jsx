@@ -1,33 +1,26 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useState } from "react";
 
-const TodoContext = createContext();
+export const TodoContext = createContext();
 
 export const TodoProvider = ({ children }) => {
   const [todos, setTodos] = useState([]);
 
   const addTodo = (text) => {
-    setTodos([...todos, { id: Date.now(), text, completed: false }]);
-  };
-
-  const toggleTodo = (id) => {
-    const updatedTodos = todos.map((todo) =>
-      todo.id === id ? { ...todo, completed: !todo.completed } : todo
-    );
-    setTodos(updatedTodos);
+    setTodos((prevTodos) => [
+      ...prevTodos,
+      { id: Date.now(), text }
+    ]);
   };
 
   const deleteTodo = (id) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
+    setTodos((prevTodos) =>
+      prevTodos.filter((todo) => todo.id !== id)
+    );
   };
 
   return (
-    <TodoContext.Provider value={{ todos, addTodo, toggleTodo, deleteTodo }}>
+    <TodoContext.Provider value={{ todos, addTodo, deleteTodo }}>
       {children}
     </TodoContext.Provider>
   );
 };
-
-export default TodoContext;
-
-// optional but best practice
-export const useTodos = () => useContext(TodoContext);

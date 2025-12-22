@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import TodoItem from "./TodoItem";
-import TodoContext from "../context/TodoContext";
+import { TodoContext } from "../context/TodoContext";
+import TodoItem from "../components/TodoItem";
 
 const TodoList = () => {
   const { todos } = useContext(TodoContext);
@@ -8,11 +8,7 @@ const TodoList = () => {
   return (
     <div>
       {todos.map((todo) => (
-        <TodoItem
-          key={todo.id}        // ✅ unique key
-          item={todo.text}
-          todo={todo}          // optional: pass full todo
-        />
+        <TodoItem key={todo.id} todo={todo} />
       ))}
     </div>
   );

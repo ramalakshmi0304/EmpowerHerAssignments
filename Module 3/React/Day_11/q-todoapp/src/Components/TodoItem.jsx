@@ -1,15 +1,15 @@
-import React from 'react'
+import { useContext } from "react";
+import { TodoContext } from "../context/TodoContext";
 
-const TodoItem = ({ item }) => {
-    return (
-        <div>
-            <ul>
-                <li>
-                    <span>{item}</span>
-                </li>
-            </ul>
-        </div>
-    )
-}
+const TodoItem = ({ todo }) => {
+  const { deleteTodo } = useContext(TodoContext);
 
-export default TodoItem
+  return (
+    <div>
+      <span>{todo.text}</span>
+      <button onClick={() => deleteTodo(todo.id)}>❌</button>
+    </div>
+  );
+};
+
+export default TodoItem;

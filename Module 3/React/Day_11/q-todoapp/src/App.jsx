@@ -1,19 +1,12 @@
-import React from 'react'
-import AddTodo from './Components/AddTodo'
-import { TodoProvider } from './context/TodoContext';
-import TodoList from './Components/TodoList';
+import { TodoProvider } from "./context/TodoContext"
+import Todos from "./components/Todos"
 
 const App = () => {
   return (
-    <div className='App'>
-      <TodoProvider>
-        <AddTodo />
-        <TodoList/>
-
-      </TodoProvider>
-
-    </div>
-  );
+    <TodoProvider>
+      <Todos />
+    </TodoProvider>
+  )
 }
 
 export default App
