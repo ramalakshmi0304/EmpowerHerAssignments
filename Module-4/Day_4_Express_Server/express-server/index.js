@@ -2,7 +2,7 @@ const express = require("express"); // import express
 
 const app = express(); //initilizing express app
 
-const PORT = 3000; // Define port
+const PORT = 3000;
 
 app.get("/home" , (req,res)=>{
 
