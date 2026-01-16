@@ -1,0 +1,32 @@
+{
+  "users": [
+    {
+      "id": "1768547969568",
+      "name": "jin",
+      "email": "test2@gmail.com"
+    },
+    {
+      "id": "1768547987342",
+      "name": "joe",
+      "email": "test1@gmail.com"
+    },
+    {
+      "id": "1768548002322",
+      "name": "joe",
+      "email": "test4@gmail.com"
+    }
+  ],
+  "todos": [
+    {},
+    {
+      "id": "1768559651038",
+      "title": "solving assignment",
+      "completed": true
+    },
+    {
+      "id": "1768559678088",
+      "title": "cooking",
+      "completed": false
+    }
+  ]
+}
