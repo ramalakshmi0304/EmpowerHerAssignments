@@ -1,0 +1,137 @@
+Aggregate Queries
+
+SELECT COUNT(*) AS total_students
+FROM students;
+
+| total_students |
+| -------------- |
+| 7              |
+
+SELECT AVG(age) AS average_age
+FROM students;
+
+| average_age         |
+| ------------------- |
+| 24.0000000000000000 |
+
+SELECT MIN(age) AS youngest, MAX(age) AS oldest
+FROM students;
+
+| youngest | oldest |
+| -------- | ------ |
+| 22       | 27     |
+
+
+SELECT course, COUNT(*) AS total_students
+FROM students
+GROUP BY course;
+
+| course                 | total_students |
+| ---------------------- | -------------- |
+| Mechanical Engineering | 1              |
+| Chemistry              | 1              |
+| Mathematics            | 2              |
+| Civil Engineering      | 1              |
+| Biotechnology          | 1              |
+| Applied Physics        | 1              |
+
+SELECT COUNT(*) AS students_above_20
+FROM students
+WHERE age > 20;
+
+| students_above_20 |
+| ----------------- |
+| 7                 |
+
+
+Grouping & Filtering
+
+
+SELECT course, COUNT(*) AS student_count
+FROM students
+GROUP BY course;
+| course                 | student_count |
+| ---------------------- | ------------- |
+| Mechanical Engineering | 1             |
+| Chemistry              | 1             |
+| Mathematics            | 2             |
+| Civil Engineering      | 1             |
+| Biotechnology          | 1             |
+| Applied Physics        | 1             |
+
+
+SELECT course, COUNT(*) AS student_count
+FROM students
+GROUP BY course
+HAVING COUNT(*) > 1;
+
+| course      | student_count |
+| ----------- | ------------- |
+| Mathematics | 2             |
+
+
+SELECT course, COUNT(*) AS student_count
+FROM students
+GROUP BY course
+ORDER BY student_count DESC;
+
+| course                 | student_count |
+| ---------------------- | ------------- |
+| Mathematics            | 2             |
+| Mechanical Engineering | 1             |
+| Chemistry              | 1             |
+| Civil Engineering      | 1             |
+| Biotechnology          | 1             |
+| Applied Physics        | 1             |
+
+
+
+SELECT course, COUNT(*) AS student_count
+FROM students
+GROUP BY course
+HAVING COUNT(*) > 1
+ORDER BY student_count DESC;
+
+
+| course      | student_count |
+| ----------- | ------------- |
+| Mathematics | 2             |
+
+
+Ordering & Limiting
+
+SELECT *
+FROM students
+ORDER BY created_at DESC
+LIMIT 3;
+
+| id | name          | email               | age | course                 | created_at                 |
+| -- | ------------- | ------------------- | --- | ---------------------- | -------------------------- |
+| 5  | Karthik Reddy | karthik@example.com | 23  | Mechanical Engineering | 2026-01-19 07:31:05.248474 |
+| 7  | Rohit Kumar   | rohit@example.com   | 24  | Civil Engineering      | 2026-01-19 07:31:05.248474 |
+| 1  | Alice         | alice@example.com   | 22  | Mathematics            | 2026-01-19 07:31:05.248474 |
+
+
+SELECT *
+FROM students
+ORDER BY age DESC
+LIMIT 5;
+
+| id | name         | email              | age | course            | created_at                 |
+| -- | ------------ | ------------------ | --- | ----------------- | -------------------------- |
+| 6  | Sneha Patel  | sneha@example.com  | 27  | Biotechnology     | 2026-01-19 07:31:05.248474 |
+| 9  | Vikram Joshi | vikram@example.com | 25  | Mathematics       | 2026-01-19 07:31:05.248474 |
+| 7  | Rohit Kumar  | rohit@example.com  | 24  | Civil Engineering | 2026-01-19 07:31:05.248474 |
+| 2  | Bob          | bob@example.com    | 24  | Applied Physics   | 2026-01-19 07:31:05.248474 |
+| 10 | Priya Nair   | priya@example.com  | 23  | Chemistry         | 2026-01-19 07:31:05.248474 |
+
+SELECT *
+FROM students
+WHERE course = 'Applied Physics'
+ORDER BY age DESC;
+
+| id | name | email           | age | course          | created_at                 |
+| -- | ---- | --------------- | --- | --------------- | -------------------------- |
+| 2  | Bob  | bob@example.com | 24  | Applied Physics | 2026-01-19 07:31:05.248474 |
+
+
