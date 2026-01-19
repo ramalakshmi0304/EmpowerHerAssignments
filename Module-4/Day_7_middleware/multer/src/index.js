@@ -1,3 +1,5 @@
+
+import { configDotenv } from "dotenv";
 import express from "express";
 import userRoutes from "./routes/users.routes.js";
 
@@ -12,7 +14,7 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: "Something went wrong!" });
 });
 
-const PORT = 3000;
+const PORT = process.env.PORT || 5600;
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });

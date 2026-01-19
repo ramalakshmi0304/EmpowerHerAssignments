@@ -1,3 +1,10 @@
 {
-  "users": []
+  "users": [
+    {
+      "id": "3a703db1-928a-4db1-b904-dcf657b0bd4e",
+      "name": "john",
+      "email": "john@gmail.com",
+      "profilePic": "https://res.cloudinary.com/dekgdoomm/image/upload/v1768843669/profilePics/f4zsmiicfimu8i5h34nt.jpg"
+    }
+  ]
 }
