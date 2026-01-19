@@ -1,0 +1,143 @@
+CREATE TABLE  students (
+  id SERIAL PRIMARY KEY,
+  name TEXT NOT NULL,
+  email TEXT UNIQUE NOT NULL,
+  age INTEGER,
+  course TEXT,
+ 
+);
+
+ALTER TABLE STUDENTS
+ADD COLUMN  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+
+INSERT INTO STUDENTS (name,email,age,course)
+VALUES
+('Alice', 'alice@example.com', 22, 'Mathematics'),
+('Bob', 'bob@example.com', 24, 'Physics'),
+('Charlie', 'charlie@example.com', 23, 'Chemistry'),
+('Divya Sharma', 'divya@example.com', 21, 'Computer Science'),
+('Karthik Reddy', 'karthik@example.com', 23, 'Mechanical Engineering'),
+('Sneha Patel', 'sneha@example.com', 22, 'Biotechnology'),
+('Rohit Kumar', 'rohit@example.com', 24, 'Civil Engineering'),
+('Ananya Singh', 'ananya@example.com', 20, 'Physics'),
+('Vikram Joshi', 'vikram@example.com', 25, 'Mathematics'),
+('Priya Nair', 'priya@example.com', 23, 'Chemistry');
+
+SELECT * FROM students;
+SELECT * FROM students
+WHERE age > 20;
+SELECT name,email
+FROM students;
+SELECT *
+FROM students
+WHERE course = 'Computer Science';
+SELECT name,email,age,course
+FROM students
+WHERE age > 20 AND course ='Physics';
+
+| id | name          | email               | age | course                 | created_at                 |
+| -- | ------------- | ------------------- | --- | ---------------------- | -------------------------- |
+| 1  | Alice         | alice@example.com   | 22  | Mathematics            | 2026-01-19 07:31:05.248474 |
+| 2  | Bob           | bob@example.com     | 24  | Physics                | 2026-01-19 07:31:05.248474 |
+| 3  | Charlie       | charlie@example.com | 23  | Chemistry              | 2026-01-19 07:31:05.248474 |
+| 4  | Divya Sharma  | divya@example.com   | 21  | Computer Science       | 2026-01-19 07:31:05.248474 |
+| 5  | Karthik Reddy | karthik@example.com | 23  | Mechanical Engineering | 2026-01-19 07:31:05.248474 |
+| 6  | Sneha Patel   | sneha@example.com   | 22  | Biotechnology          | 2026-01-19 07:31:05.248474 |
+| 7  | Rohit Kumar   | rohit@example.com   | 24  | Civil Engineering      | 2026-01-19 07:31:05.248474 |
+| 8  | Ananya Singh  | ananya@example.com  | 20  | Physics                | 2026-01-19 07:31:05.248474 |
+| 9  | Vikram Joshi  | vikram@example.com  | 25  | Mathematics            | 2026-01-19 07:31:05.248474 |
+| 10 | Priya Nair    | priya@example.com   | 23  | Chemistry              | 2026-01-19 07:31:05.248474 |
+
+
+| id | name          | email               | age | course                 | created_at                 |
+| -- | ------------- | ------------------- | --- | ---------------------- | -------------------------- |
+| 1  | Alice         | alice@example.com   | 22  | Mathematics            | 2026-01-19 07:31:05.248474 |
+| 2  | Bob           | bob@example.com     | 24  | Physics                | 2026-01-19 07:31:05.248474 |
+| 3  | Charlie       | charlie@example.com | 23  | Chemistry              | 2026-01-19 07:31:05.248474 |
+| 4  | Divya Sharma  | divya@example.com   | 21  | Computer Science       | 2026-01-19 07:31:05.248474 |
+| 5  | Karthik Reddy | karthik@example.com | 23  | Mechanical Engineering | 2026-01-19 07:31:05.248474 |
+| 6  | Sneha Patel   | sneha@example.com   | 22  | Biotechnology          | 2026-01-19 07:31:05.248474 |
+| 7  | Rohit Kumar   | rohit@example.com   | 24  | Civil Engineering      | 2026-01-19 07:31:05.248474 |
+| 9  | Vikram Joshi  | vikram@example.com  | 25  | Mathematics            | 2026-01-19 07:31:05.248474 |
+| 10 | Priya Nair    | priya@example.com   | 23  | Chemistry              | 2026-01-19 07:31:05.248474 |
+
+SELECT name,email
+FROM students;
+
+| name          | email               |
+| ------------- | ------------------- |
+| Alice         | alice@example.com   |
+| Bob           | bob@example.com     |
+| Charlie       | charlie@example.com |
+| Divya Sharma  | divya@example.com   |
+| Karthik Reddy | karthik@example.com |
+| Sneha Patel   | sneha@example.com   |
+| Rohit Kumar   | rohit@example.com   |
+| Ananya Singh  | ananya@example.com  |
+| Vikram Joshi  | vikram@example.com  |
+| Priya Nair    | priya@example.com   |
+
+SELECT *
+FROM students
+WHERE course = 'Computer Science';
+
+| id | name         | email             | age | course           | created_at                 |
+| -- | ------------ | ----------------- | --- | ---------------- | -------------------------- |
+| 4  | Divya Sharma | divya@example.com | 21  | Computer Science | 2026-01-19 07:31:05.248474 |
+
+SELECT name,email,age,course
+FROM students
+WHERE age > 20 AND course ='Physics';
+
+
+| name | email           | age | course  |
+| ---- | --------------- | --- | ------- |
+| Bob  | bob@example.com | 24  | Physics |
+
+
+UPDATE students
+SET age=27
+WHERE id = 6;
+SELECT * FROM students
+WHERE id = 6;
+
+| id | name        | email             | age | course        | created_at                 |
+| -- | ----------- | ----------------- | --- | ------------- | -------------------------- |
+| 6  | Sneha Patel | sneha@example.com | 27  | Biotechnology | 2026-01-19 07:31:05.248474 |
+
+
+UPDATE students
+SET course ='Applied Physics'
+WHERE course = 'Physics';
+
+SELECT * FROM students
+WHERE course = 'Applied Physics';
+
+| id | name         | email              | age | course          | created_at                 |
+| -- | ------------ | ------------------ | --- | --------------- | -------------------------- |
+| 2  | Bob          | bob@example.com    | 24  | Applied Physics | 2026-01-19 07:31:05.248474 |
+| 8  | Ananya Singh | ananya@example.com | 20  | Applied Physics | 2026-01-19 07:31:05.248474 |
+
+
+DELETE FROM students
+WHERE id = 3;
+
+DELETE FROM students
+WHERE age < 22;
+
+SELECT *
+FROM students
+
+
+
+| id | name          | email               | age | course                 | created_at                 |
+| -- | ------------- | ------------------- | --- | ---------------------- | -------------------------- |
+| 1  | Alice         | alice@example.com   | 22  | Mathematics            | 2026-01-19 07:31:05.248474 |
+| 5  | Karthik Reddy | karthik@example.com | 23  | Mechanical Engineering | 2026-01-19 07:31:05.248474 |
+| 7  | Rohit Kumar   | rohit@example.com   | 24  | Civil Engineering      | 2026-01-19 07:31:05.248474 |
+| 9  | Vikram Joshi  | vikram@example.com  | 25  | Mathematics            | 2026-01-19 07:31:05.248474 |
+| 10 | Priya Nair    | priya@example.com   | 23  | Chemistry              | 2026-01-19 07:31:05.248474 |
+| 6  | Sneha Patel   | sneha@example.com   | 27  | Biotechnology          | 2026-01-19 07:31:05.248474 |
+| 2  | Bob           | bob@example.com     | 24  | Applied Physics        | 2026-01-19 07:31:05.248474 |
+
+
