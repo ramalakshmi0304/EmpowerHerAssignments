@@ -1,4 +1,4 @@
-Aggregate Queries
+Aggregate Queries:
 
 SELECT COUNT(*) AS total_students
 FROM students;
