@@ -1,0 +1,217 @@
+Step 1: Create Tables with Relationships
+
+
+CREATE TABLE users(
+  id SERIAL PRIMARY KEY,
+  name TEXT NOT NULL,
+  email TEXT UNIQUE NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE orders(
+id SERIAL PRIMARY KEY,
+user_id INTEGER NOT NULL, 
+amount INTEGER NOT NULL,
+status TEXT NOT NULL,
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+CONSTRAINT fk_user
+FOREIGN KEY (user_id)
+REFERENCES users(id)
+ON DELETE RESTRICT
+);
+
+Step 2: Insert Data
+
+INSERT INTO users (name,email) VALUES
+('Rama', 'rama@gmail.com'),
+('Sita','sita@gmail.com'),
+('Arjun', 'arjun@gmail.com'),
+('Kiran', 'kiran@gmail.com'),
+('charan', 'charan@gmail.com');
+
+INSERT INTO orders (user_id, amount, status) VALUES
+(1,500,'placed'),
+(1,1200,'shipped'),
+(1,800, 'delivered'),
+(2,300,'placed'),
+(2,700, 'cancelled'),
+(3,1500, 'placed'),
+(4,200,'placed'),
+(4,400,'shipped'),
+(5,900,'delivered');
+
+Step 3: Read Data (Relational Reads)
+
+SELECT * FROM users;
+
+| id | name   | email            | created_at                 |
+| -- | ------ | ---------------- | -------------------------- |
+| 1  | Rama   | rama@gmail.com   | 2026-01-20 08:07:47.117508 |
+| 2  | Sita   | sita@gmail.com   | 2026-01-20 08:07:47.117508 |
+| 3  | Arjun  | arjun@gmail.com  | 2026-01-20 08:07:47.117508 |
+| 4  | Kiran  | kiran@gmail.com  | 2026-01-20 08:07:47.117508 |
+| 5  | charan | charan@gmail.com | 2026-01-20 08:07:47.117508 |
+
+
+SELECT * FROM orders;
+
+| id | user_id | amount | status    | created_at                |
+| -- | ------- | ------ | --------- | ------------------------- |
+| 1  | 1       | 500    | placed    | 2026-01-20 08:31:49.50115 |
+| 2  | 1       | 1200   | shipped   | 2026-01-20 08:31:49.50115 |
+| 3  | 1       | 800    | delivered | 2026-01-20 08:31:49.50115 |
+| 4  | 2       | 300    | placed    | 2026-01-20 08:31:49.50115 |
+| 5  | 2       | 700    | cancelled | 2026-01-20 08:31:49.50115 |
+| 6  | 3       | 1500   | placed    | 2026-01-20 08:31:49.50115 |
+| 7  | 4       | 200    | placed    | 2026-01-20 08:31:49.50115 |
+| 8  | 4       | 400    | shipped   | 2026-01-20 08:31:49.50115 |
+| 9  | 5       | 900    | delivered | 2026-01-20 08:31:49.50115 |
+
+
+--Fetch all orders for a specific user (example: user_id = 1)
+
+SELECT * FROM orders where user_id=1;
+
+| id | user_id | amount | status    | created_at                |
+| -- | ------- | ------ | --------- | ------------------------- |
+| 1  | 1       | 500    | placed    | 2026-01-20 08:31:49.50115 |
+| 2  | 1       | 1200   | shipped   | 2026-01-20 08:31:49.50115 |
+| 3  | 1       | 800    | delivered | 2026-01-20 08:31:49.50115 |
+
+
+
+--Fetch users who have more than one order
+
+SELECT users.id, users.name, COUNT(orders.id) AS total_orders
+FROM users
+JOIN orders ON users.id=orders.user_id
+GROUP BY users.id
+HAVING COUNT(orders.id)>1
+
+| id | name  | total_orders |
+| -- | ----- | ------------ |
+| 4  | Kiran | 2            |
+| 2  | Sita  | 2            |
+| 1  | Rama  | 3            |
+
+
+--Fetch total order amount per user
+
+SELECT users.name, SUM(orders.amount) AS total_amount
+FROM users
+JOIN orders ON users.id = orders.user_id
+GROUP BY users.name;
+
+| name   | total_amount |
+| ------ | ------------ |
+| Rama   | 2500         |
+| Kiran  | 600          |
+| Sita   | 1000         |
+| charan | 900          |
+| Arjun  | 1500         |
+
+
+
+Step 4: Update Data
+
+--Update the email of one user
+UPDATE users
+SET email = 'rama_new@gmail.com'
+WHERE id = 1;
+
+| id | name | email              | created_at                 |
+| -- | ---- | ------------------ | -------------------------- |
+| 1  | Rama | rama_new@gmail.com | 2026-01-20 08:07:47.117508 |
+
+
+--Update status of all orders for a specific user
+
+UPDATE orders
+SET status = 'delivered'
+WHERE user_id = 2;
+
+| id | user_id | amount | status    | created_at                |
+| -- | ------- | ------ | --------- | ------------------------- |
+| 4  | 2       | 300    | delivered | 2026-01-20 08:31:49.50115 |
+| 5  | 2       | 700    | delivered | 2026-01-20 08:31:49.50115 |
+
+
+--Update order amount for a single order
+UPDATE orders
+SET amount = 1000
+WHERE id = 3;
+
+SELECT * FROM orders where user_id=3
+
+| id | user_id | amount | status | created_at                |
+| -- | ------- | ------ | ------ | ------------------------- |
+| 6  | 3       | 1500   | placed | 2026-01-20 08:31:49.50115 |
+
+
+
+Step 5: Delete Data
+
+--Delete one order using order id
+
+DELETE FROM orders
+WHERE id = 4;
+
+
+| id | user_id | amount | status    | created_at                |
+| -- | ------- | ------ | --------- | ------------------------- |
+| 1  | 1       | 500    | placed    | 2026-01-20 08:31:49.50115 |
+| 2  | 1       | 1200   | shipped   | 2026-01-20 08:31:49.50115 |
+| 6  | 3       | 1500   | placed    | 2026-01-20 08:31:49.50115 |
+| 7  | 4       | 200    | placed    | 2026-01-20 08:31:49.50115 |
+| 8  | 4       | 400    | shipped   | 2026-01-20 08:31:49.50115 |
+| 9  | 5       | 900    | delivered | 2026-01-20 08:31:49.50115 |
+| 5  | 2       | 700    | delivered | 2026-01-20 08:31:49.50115 |
+| 3  | 1       | 1000   | delivered | 2026-01-20 08:31:49.50115 |
+
+
+--Delete all orders of a specific user
+
+DELETE FROM orders
+WHERE user_id = 5;
+
+
+| id | user_id | amount | status    | created_at                |
+| -- | ------- | ------ | --------- | ------------------------- |
+| 1  | 1       | 500    | placed    | 2026-01-20 08:31:49.50115 |
+| 2  | 1       | 1200   | shipped   | 2026-01-20 08:31:49.50115 |
+| 6  | 3       | 1500   | placed    | 2026-01-20 08:31:49.50115 |
+| 7  | 4       | 200    | placed    | 2026-01-20 08:31:49.50115 |
+| 8  | 4       | 400    | shipped   | 2026-01-20 08:31:49.50115 |
+| 5  | 2       | 700    | delivered | 2026-01-20 08:31:49.50115 |
+| 3  | 1       | 1000   | delivered | 2026-01-20 08:31:49.50115 |
+
+
+
+--Attempt deleting a user with existing orders
+DELETE FROM users
+WHERE id = 1;
+
+Error: Failed to run sql query: ERROR: 23503: update or delete on table "users" violates foreign key constraint
+"fk_user" on table "orders" DETAIL: Key (id)=(1) is still referenced from table "orders".
+
+
+
+Step 6: Conceptual Question (Short Answer)
+
+-- Orders should not be stored inside the users table because:
+-- 1. One user can have many orders (one-to-many relationship)
+-- 2. Storing orders in users would cause data duplication
+-- 3. It violates database normalization principles
+-- 4. Separate tables improve scalability, consistency, and query flexibility
+
+
+
+
+
+
+
+
+
+
+
+
