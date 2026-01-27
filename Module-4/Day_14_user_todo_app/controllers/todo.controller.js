@@ -2,82 +2,142 @@ import supabase from "../config/supabase.js";
 import { validateTodo } from "../validations/todo.validation.js";
 
 export const addTodo = async (req, res) => {
-  const errorMsg = validateTodo(req.body);
-  if (errorMsg) return res.status(400).json({ error: errorMsg });
+  try {
+    // 1️⃣ Validate request body
+    const errorMsg = validateTodo(req.body);
+    if (errorMsg) {
+      return res.status(400).json({ error: errorMsg });
+    }
 
-  const { title, description, userId } = req.body;
+    const { title, description, userId } = req.body;
 
-  // Check user exists
-  const { data: user } = await supabase
-    .from("users")
-    .select("id")
-    .eq("id", userId)
-    .single();
+    // 2️⃣ Check if user exists
+    const { data: user, error: userError } = await supabase
+      .from("users")
+      .select("id")
+      .eq("id", userId)
+      .maybeSingle();
 
-  if (!user) return res.status(404).json({ error: "User not found" });
+    if (userError) {
+      return res.status(500).json({ error: userError.message });
+    }
 
-  const { data, error } = await supabase
-    .from("todos")
-    .insert([{ title, description, user_id: userId }])
-    .select();
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
 
-  if (error) return res.status(500).json({ error: error.message });
+    // 3️⃣ Insert todo
+    const { data, error } = await supabase
+      .from("todos")
+      .insert([{ title, description, user_id: userId }])
+      .select()
+      .single();
 
-  res.status(201).json({ todo: data[0] });
+    if (error) {
+      return res.status(500).json({ error: error.message });
+    }
+
+    res.status(201).json({ todo: data });
+
+  } catch (err) {
+    console.error("Add todo error:", err);
+    res.status(500).json({ error: "Internal server error" });
+  }
 };
 
 export const getUserTodos = async (req, res) => {
-  const { userId } = req.params;
+  try {
+    const { userId } = req.params;
 
-  const { data: user } = await supabase
-    .from("users")
-    .select("id")
-    .eq("id", userId)
-    .single();
+    // 1️⃣ Check if user exists
+    const { data: user, error: userError } = await supabase
+      .from("users")
+      .select("id")
+      .eq("id", userId)
+      .maybeSingle();
 
-  if (!user) return res.status(404).json({ error: "User not found" });
+    if (userError) {
+      return res.status(500).json({ error: userError.message });
+    }
 
-  const { data, error } = await supabase
-    .from("todos")
-    .select("*")
-    .eq("user_id", userId);
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
 
-  if (error) return res.status(500).json({ error: error.message });
+    // 2️⃣ Fetch todos
+    const { data, error } = await supabase
+      .from("todos")
+      .select("*")
+      .eq("user_id", userId);
 
-  res.json({ todos: data });
+    if (error) {
+      return res.status(500).json({ error: error.message });
+    }
+
+    res.json({ todos: data });
+
+  } catch (err) {
+    console.error("Get user todos error:", err);
+    res.status(500).json({ error: "Internal server error" });
+  }
 };
 
 export const updateTodo = async (req, res) => {
-  const { todoId } = req.params;
+  try {
+    const { todoId } = req.params;
 
-  const { data: todo } = await supabase
-    .from("todos")
-    .select("*")
-    .eq("id", todoId)
-    .single();
+    // 1️⃣ Check if todo exists
+    const { data: todo, error: findError } = await supabase
+      .from("todos")
+      .select("*")
+      .eq("id", todoId)
+      .maybeSingle();
 
-  if (!todo) return res.status(404).json({ error: "Todo not found" });
+    if (findError) {
+      return res.status(500).json({ error: findError.message });
+    }
 
-  const { data, error } = await supabase
-    .from("todos")
-    .update(req.body)
-    .eq("id", todoId)
-    .select();
+    if (!todo) {
+      return res.status(404).json({ error: "Todo not found" });
+    }
 
-  if (error) return res.status(500).json({ error: error.message });
+    // 2️⃣ Update todo
+    const { data, error } = await supabase
+      .from("todos")
+      .update(req.body)
+      .eq("id", todoId)
+      .select()
+      .single();
 
-  res.json({ updatedTodo: data[0] });
+    if (error) {
+      return res.status(500).json({ error: error.message });
+    }
+
+    res.json({ updatedTodo: data });
+
+  } catch (err) {
+    console.error("Update todo error:", err);
+    res.status(500).json({ error: "Internal server error" });
+  }
 };
 
 export const deleteTodo = async (req, res) => {
-  const { todoId } = req.params;
+  try {
+    const { todoId } = req.params;
 
-  const { data, error } = await supabase
-    .from("todos")
-    .delete()
-    .eq("id", todoId);
+    const { error } = await supabase
+      .from("todos")
+      .delete()
+      .eq("id", todoId);
 
-  if (error) return res.status(500).json({ error: error.message });
+    if (error) {
+      return res.status(500).json({ error: error.message });
+    }
 
-  res.json({ message: "Todo deleted" });
+    res.json({ message: "Todo deleted" });
+
+  } catch (err) {
+    console.error("Delete todo error:", err);
+    res.status(500).json({ error: "Internal server error" });
+  }
 };
