@@ -3,7 +3,7 @@ import supabase from "./config/supabase.js";
 async function checkDatabaseConnection() {
   try {
     const { error } = await supabase
-      .from("userrs")
+      .from("users")
       .select("id")
       .limit(1);
 
