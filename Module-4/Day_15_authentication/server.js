@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3330;
 
 app.use(express.json());
 
-app.use("/users", userRoute);
+app.use("/useers", userRoute);
 
 (async () => {
   try {

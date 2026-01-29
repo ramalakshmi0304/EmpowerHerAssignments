@@ -13,7 +13,7 @@ export const signup = async (req, res) => {
 
     // check existing user
     const { data: existingUser, error: findError } = await supabase
-      .from("users")
+      .from("useers")
       .select("id")
       .eq("email", email)
       .maybeSingle();
@@ -30,7 +30,7 @@ export const signup = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     // insert user
-    const { error } = await supabase.from("users").insert({
+    const { error } = await supabase.from("useers").insert({
       name,
       email,
       age,
@@ -58,8 +58,8 @@ export const getMyProfile = async (req, res) => {
       return res.status(400).json({ error: "Name query parameter is required" });
     }
 
-    const { data: user, error } = await supabase
-      .from("users")
+    const { data: useer, error } = await supabase
+      .from("useers")
       .select("id, name, email, age, location")
       .eq("name", name)
       .maybeSingle();
@@ -68,11 +68,11 @@ export const getMyProfile = async (req, res) => {
       return res.status(500).json({ error: error.message });
     }
 
-    if (!user) {
+    if (!useer) {
       return res.status(404).json({ error: "User not found" });
     }
 
-    res.json(user);
+    res.json(useer);
 
   } catch (err) {
     res.status(500).json({ error: "Internal Server Error" });
